@@ -17,8 +17,11 @@ const adequateBadge = "badges/adequate.svg"
 
 var badgeRex = regexp.MustCompile("(?i)(\\[!\\[[a-zA-Z0-9_ ]*\\]\\([0-9a-z.\\/:?=-]*\\)\\]\\([0-9a-z.\\/:-]*\\))")
 
-func checkBadges(username string, reponame string) (string, error) {
-	resp, err := http.Get(fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/master/README.md", username, reponame))
+func checkBadges(username string, reponame string, branch string) (string, error) {
+	if branch == "" {
+		branch = "master"
+	}
+	resp, err := http.Get(fmt.Sprintf("https://raw.githubusercontent.com/%s/%s/%s/README.md", username, reponame, branch))
 	if err != nil {
 		// handle error
 		logrus.Fatalf("could not fetch: %v", err)
@@ -26,7 +29,7 @@ func checkBadges(username string, reponame string) (string, error) {
 	logrus.Debug("resp: ", resp)
 	if resp.StatusCode != 200 {
 		logrus.Debugf("Github repo %s not found", fmt.Sprintf("github.com/%s/%s", username, reponame))
-		return "", errors.New("github repo not found")
+		return "", errors.New("github repo/branch not found")
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)

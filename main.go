@@ -24,7 +24,9 @@ func main() {
 	iris.Get("/github.com/:username/:reponame", func(ctx *iris.Context) {
 		username := ctx.Param("username")
 		reponame := ctx.Param("reponame")
-		badge, err := checkBadges(username, reponame)
+		queryString := ctx.URI().QueryArgs()
+		logrus.Debug("branch: %v", string(queryString.Peek("branch")))
+		badge, err := checkBadges(username, reponame, string(queryString.Peek("branch")))
 		if err != nil {
 			ctx.Write(err.Error())
 			ctx.SetStatusCode(iris.StatusInternalServerError)
