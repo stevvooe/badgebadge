@@ -1,4 +1,4 @@
-# badgebadge ![Badge Badge](https://img.shields.io/badge/badges-inadequate-red.svg)
+# badgebadge ![Badge Badge](http://doyouevenbadge.com/github.com/stevvooe/badgebadge)
 
 Do you even badge?
 
@@ -7,8 +7,10 @@ Make sure you have all the badges on your project to make it shine!
 Simple place the following markdown in your project to report on whether or not you have sufficient status badging:
 
 ```markdown
-![Badge Badge](https://img.shields.io/badge/badges-inadequate-red.svg)
+![Badge Badge](http://doyouevenbadge.com/github.com/stevvooe/badgebadge)
 ```
+
+Make sure to replace `github.com/stevvooe/badgebadge` with the name of your project.
 
 ## Build
 
