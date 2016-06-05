@@ -33,3 +33,7 @@ Only 2 ENVIRONMENT variables are
 
 * DEBUG - Shows more output in the server logs
 * BADGE_COUNT - Minimum amount of badges for it to pass (default: 3)
+
+
+## Status
+[![Status Cake](https://www.statuscake.com/App/button/index.php?Track=0vgZznzlRJ&Days=1&Design=1)](https://www.statuscake.com)
