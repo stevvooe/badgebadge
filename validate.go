@@ -15,7 +15,7 @@ var badgeMinimum int
 const inadequateBadge = "badges/inadequate.svg"
 const adequateBadge = "badges/adequate.svg"
 
-var badgeRex = regexp.MustCompile("(?i)(\\[!\\[[a-zA-Z0-9_ ]*\\]\\([0-9a-z.\\/:?=-]*\\)\\]\\([0-9a-z.\\/:-]*\\))")
+var badgeRex = regexp.MustCompile("(?i)(\\[!\\[[a-zA-Z0-9_ .]*\\]\\([0-9a-z.\\/:&?=-]*\\)\\]\\([0-9a-z.\\/:-?&]*\\))?")
 
 func checkBadges(username string, reponame string, branch string) ([]string, error) {
 	githubRepo := fmt.Sprintf("github.com/%s/%s", username, reponame)
