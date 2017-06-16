@@ -31,10 +31,18 @@ type Badge struct {
 
 func main() {
 	iris.Static("/badges", "./badges/", 1)
+	iris.Static("/assets", "./assets/", 1)
 	iris.Get("/github.com/:username/:reponame", handleReport)
 	iris.Get("/report/github.com/:username/:reponame", handleReport)
+	iris.Get("/", handleHome)
 	// logrus.Debug("Server listening on :8080")
 	iris.Listen(":8080")
+}
+
+func handleHome(ctx *iris.Context) {
+	if err := ctx.Render("index.html", Badge{}); err != nil {
+		logrus.Panic(err)
+	}
 }
 
 func handleReport(ctx *iris.Context) {
@@ -62,7 +70,7 @@ func handleReport(ctx *iris.Context) {
 			htmlBadges = []byte("<p><em>No badges found in README.md</em></p>")
 		}
 
-		if err := ctx.Render("index.html", Badge{
+		if err := ctx.Render("report.html", Badge{
 			BadgesHTML: template.HTML(string(htmlBadges)),
 			Badge:      badges[0],
 		}); err != nil {
