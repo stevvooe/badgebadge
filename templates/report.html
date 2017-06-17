@@ -1,0 +1,13 @@
+<div class="badge {{ .Color }}">
+	<span>badge</span>
+	<i>{{ .Verdict }}</i>
+</div>
+
+<h2>Report</h2>
+<p>Repo Badge Earned: <img src="/{{ .Badge }}" alt="Badge {{ .Title }}" class="gitbadge" /></p>
+<p>Badge(s) found<br/>
+{{ .HTML }}
+</p>
+
+<p>To add this badge to your repo, add this to your README.MD</p>
+<pre><code>{{ .Code }}</code></pre>
