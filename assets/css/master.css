@@ -13,9 +13,9 @@ body {
 }
 
 .inset {
-	width: 400px;
+	width: 600px;
 	position: absolute;
-	margin: -140px -200px 0;
+	margin: -140px -300px 0;
 	top: 50%;
 	left: 50%;
 }
@@ -33,6 +33,15 @@ body {
 
 .inset h1 b {
 	font-weight: 800;
+}
+
+.inset h1 a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.inset h2, .inset h3 {
+	text-align: center;
 }
 
 .inset .badge {
@@ -69,6 +78,10 @@ body {
 	border-bottom-right-radius: 6px;
 }
 
+.inset .badge.red i {
+	background: #c30d0d;
+}
+
 .inset form {
 	margin: 30px auto 0;
 	width: 400px;
@@ -103,12 +116,40 @@ body {
 	border: 0;
 }
 
-.inset p {
+.inset p, .footer p {
 	font-size: 14px;
-	width: 340px;
+	width: 540px;
 	margin: 20px auto 0;
 	opacity: .8;
 	font-weight: 300;
 	text-align: center;
 }
+.inset p.red {
+	color: red;
+}
 
+.inset .gitbadge {
+	margin-left: 10px;
+}
+
+.footer {
+	width: 600px;
+	position: absolute;
+	margin: -140px -300px 0;
+	bottom: 10%;
+	left: 50%;
+}
+
+pre {
+	box-shadow: 0px 0px 6px rgba(0,0,0,0.3);
+	line-height: 1.2em;
+	font-family: monospace;
+	border: 1 solid #4d4d4c;
+	text-align: center;
+	margin-left: -200px;
+	width: 1000px;
+}
+pre code {
+	padding: 5px;
+	font-size: 10px;
+}

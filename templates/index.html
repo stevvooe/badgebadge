@@ -1,57 +1,8 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html class="no-js" lang="en">
-<!--<![endif]-->
-<!-- the "no-js" class is for Modernizr. -->
-
-<head>
-	<meta charset="utf-8">
-	<title>Docker</title>
-	<meta name="description" content="">
-	<meta name="keywords" content="" <meta name="google-site-verification" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="assets/img/favicon.ico">
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,900" rel="stylesheet">
-	<link rel="stylesheet" href="assets/css/master.css">
-	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-</head>
-
-<body>
-	<div class="inset">
-		<svg width="76" height="68" viewBox="0 0 76 68" xmlns="http://www.w3.org/2000/svg">
-			<title>Badge</title>
-			<g fill="none" fill-rule="evenodd">
-				<path fill="#8CC008" d="M0 28L39 0l37 28v10L39 10 0 38z">
-					<animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0s" dur="3s" repeatCount="indefinite" />
-				</path>
-				<path fill="#70990F" d="M0 38l39-28 37 28v10L39 20 0 48z">
-					<animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0.2s" dur="3s" repeatCount="indefinite" />
-				</path>
-				<path fill="#5C7B0D" d="M0 48l39-28 37 28v10L39 30 0 58z">
-					<animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0.4s" dur="3s" repeatCount="indefinite" />
-				</path>
-				<path fill="#42590D" d="M0 58l39-28 37 28v10L39 40 0 68z">
-					<animate attributeName="opacity" attributeType="XML" values="1; .2; 1" begin="0.6s" dur="3s" repeatCount="indefinite" />
-				</path>
-			</g>
-		</svg>
-		<h1>Do You Even <b>Badge?</b></h1>
-		<div class="badge">
-			<span>badge</span>
-			<i>yes</i>
-		</div>
-		<form>
-			<input type="text" placeholder="github.com/...../" />
-			<button type="submit">submit</button>
-		</form>
-		<p><b>Do you even badge?</b> Maecenas lobortis ante et lectus faucibus mattis. Donec eleifend faucibus arcu, ac venenatis
-			metus aliquet non. Duis faucibus ac libero quis egestas. Donec elementum.
-		</p>
-	</div>
-</body>
-
-</html>
+<div class="badge">
+	<span>badge</span>
+	<i>yes</i>
+</div>
+<form action="/report" method="get">
+	<input type="text" name="repo" placeholder="github.com/...../" />
+	<button type="submit">submit</button>
+</form>

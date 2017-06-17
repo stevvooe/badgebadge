@@ -15,9 +15,10 @@ var badgeMinimum int
 const inadequateBadge = "badges/inadequate.svg"
 const adequateBadge = "badges/adequate.svg"
 
+// var badgeRex = regexp.MustCompile(`(?i)(\[!\[(?!badge)[a-z0-9_ .]+\]\([0-9a-z.\/:&?=-]+\)\]\([0-9a-z.\/:&?-]+\))`)
 var badgeRex = regexp.MustCompile(`(?i)(\[!\[[a-z0-9_ .]+\]\([0-9a-z.\/:&?=-]+\)\]\([0-9a-z.\/:&?-]+\))`)
 
-func checkBadges(username string, reponame string, branch string) ([]string, error) {
+func checkBadges(username string, reponame string, branch string) ([]string, string, error) {
 	githubRepo := fmt.Sprintf("github.com/%s/%s", username, reponame)
 	if branch == "" {
 		branch = "master"
@@ -26,19 +27,19 @@ func checkBadges(username string, reponame string, branch string) ([]string, err
 	if err != nil {
 		// handle error
 		logrus.Debugf("could not fetch github repo: %s - err: %v", githubRepo, err)
-		return []string{}, err
+		return []string{}, "", err
 	}
 	logrus.Debug("resp: ", resp)
 	if resp.StatusCode != 200 {
 		logrus.Debugf("Github repo %s not found", githubRepo)
-		return []string{}, errors.New("github repo/branch not found")
+		return []string{}, "", errors.New("github repo/branch not found")
 	}
 	defer resp.Body.Close()
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
 		// handle error
 		logrus.Debugf("could not read body from %s: %v", githubRepo, err)
-		return []string{}, err
+		return []string{}, "", err
 	}
 	logrus.Debug("body: ", string(body))
 
@@ -47,11 +48,11 @@ func checkBadges(username string, reponame string, branch string) ([]string, err
 	// example to find all matches for a regexp.
 	badgeMatch := badgeRex.FindAllString(string(body), -1)
 	logrus.Debug(badgeMatch)
-	logrus.Infof("Badge count: %v - min: %v", len(badgeMatch), badgeMinimum)
+	logrus.Infof("Repo: %s Badge count: %v - min: %v", githubRepo, len(badgeMatch), badgeMinimum)
 	if len(badgeMatch) >= badgeMinimum {
 		logrus.Info("Congrats you haz all badges")
-		return append([]string{adequateBadge}, badgeMatch...), nil
+		return append([]string{adequateBadge}, badgeMatch...), "adequate", nil
 	}
 	logrus.Info("Needz moar badges")
-	return append([]string{inadequateBadge}, badgeMatch...), nil
+	return append([]string{inadequateBadge}, badgeMatch...), "inadequate", nil
 }
