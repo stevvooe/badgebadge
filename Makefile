@@ -12,5 +12,5 @@ clean:
 	-docker image rm $(IMAGE_NAME)
 
 push:
-	docker tag $(IMAGE_NAME) appaws/badgebadge:latest
-	docker push appaws/badgebadge:latest
+	docker tag $(IMAGE_NAME) appaws/badgebadge:0.2
+	docker push appaws/badgebadge:0.2

@@ -54,6 +54,9 @@ func main() {
 	app.Get("/report/github.com/:username/:reponame", handleReport)
 	app.Get("/report", showReport)
 	app.Get("/", handleHome)
+	app.OnError(iris.StatusNotFound, func(ctx *iris.Context) {
+		ctx.Render("error.html", struct{ Message string }{Message: "page not found"})
+	})
 	// logrus.Debug("Server listening on :8080")
 	app.Listen(":8080")
 }
